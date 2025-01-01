@@ -7,6 +7,9 @@ import logo from "../images/logo.png";
 function ContentPage() {
   const dispatch = useDispatch();
   const playlist = useSelector((store) => store?.playlistData?.Data);
+  const song = useSelector((store) => store?.songInfo?.info);
+  const songPhoto = song?.album?.images[0]?.url;
+  console.log(songPhoto);
   const allSongs = playlist[0];
   const [selectedButton, setSelectedButton] = useState(null);
   const [songs, setSongs] = useState(allSongs);
@@ -50,24 +53,33 @@ function ContentPage() {
   return (
     <div className=" flex flex-col md:bg-red-950 md:md:w-auto md:flex-col md:flex ">
       {/* nav */}
-      <section className= "hidden md:w-auto md:flex md:justify-evenly  md:mt-6  md:p-4">
-        <span to="/comingsoon" className="md:pt-1">Music</span>
-        <span to="/comingsoon" className="md:pt-1">Podcast</span>
-        <span to="/comingsoon" className="md:pt-1">Live</span>
-        <span to="/comingsoon" className="pmd:t-1">Radio</span>
-        <input placeholder="search" className="md:bg-red-950 md:border md:pl-5 md:w-52 md:border-white md:p-1 md:rounded-full" />
+      <section className="hidden md:w-auto md:flex md:justify-evenly  md:mt-6  md:p-4">
+        <span to="/comingsoon" className="md:pt-1">
+          Music
+        </span>
+        <span to="/comingsoon" className="md:pt-1">
+          Podcast
+        </span>
+        <span to="/comingsoon" className="md:pt-1">
+          Live
+        </span>
+        <span to="/comingsoon" className="pmd:t-1">
+          Radio
+        </span>
+        <input
+          placeholder="search"
+          className="md:bg-red-950 md:border md:pl-5 md:w-52 md:border-white md:p-1 md:rounded-full"
+        />
       </section>
 
       {/* playlist photos */}
       <section className="md:flex flex mt-10 md:mt-10 justify-center xl:mt-4 md:justify-center">
-        <section
-          className="relative bg-cover bg-center shadow-md shadow-current rounded-2xl mb-10  h-72 w-9/12 md:h-80 xl:h-52 md:w-10/12 xl:w-6/12 md:flex md:rounded-2xl md:items-center md:justify-center md:text-white"
-          style={{
-            backgroundImage: `url(${logo})`,
-          }}
+        <img
+          className="relative bg-cover bg-center shadow-md shadow-current rounded-2xl mb-10  h-72 w-7/12 md:h-80 xl:h-52 md:w-10/12 xl:w-6/12 md:flex md:rounded-2xl md:items-center md:justify-center md:text-white"
+          src={songPhoto || logo}
         >
-          <div className="md:absolute md:inset-0 md:bg-opacity-50"></div>
-        </section>
+        </img>
+          {/* <div className="md:absolute md:inset-0 md:bg-opacity-50"></div> */}
       </section>
 
       {/* songs list */}
@@ -87,7 +99,11 @@ function ContentPage() {
             >
               {songs &&
                 songs.map((eachSong, index) => (
-                  <Draggable key={eachSong.id} draggableId={eachSong.id} index={index}>
+                  <Draggable
+                    key={eachSong.id}
+                    draggableId={eachSong.id}
+                    index={index}
+                  >
                     {(provided) => (
                       <div
                         ref={provided.innerRef}
@@ -96,19 +112,25 @@ function ContentPage() {
                         onClick={() => handleMusic(eachSong.id)}
                         className="w-full xl:hover:bg-red-900  text-md mt-3 p-2 flex justify-around border-b border-gray-500"
                       >
-                        <span className="md:text-center  w-1/12">{index + 1}</span>
+                        <span className="md:text-center  w-1/12">
+                          {index + 1}
+                        </span>
                         <span className=" hidden xl:text-start xl:flex xl:w-5/12">
                           <img
                             src={`${eachSong?.album?.images[0]?.url}`}
                             className=" xl:w-7 xl:mr-2 xl:h-7"
                           />
-                          <span className="md:line-clamp-1">{eachSong?.name}</span>
+                          <span className="md:line-clamp-1">
+                            {eachSong?.name}
+                          </span>
                         </span>
                         <span className="w-3/12 line-clamp-2 xl:text-start md:text-start md:line-clamp-1 pl-3">
                           {eachSong?.album?.name}
                         </span>
                         <span className="w-3/12 flex justify-center">
-                          {(eachSong?.duration_ms / 60000).toFixed(2) + " " + "min"}
+                          {(eachSong?.duration_ms / 60000).toFixed(2) +
+                            " " +
+                            "min"}
                         </span>
                       </div>
                     )}
