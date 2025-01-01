@@ -3,21 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../images/logo.png";
 import ContentPage from "../Components/ContentPage";
 import AudioCard from "./AudioCard";
-// import nextBtn from "../images/nextBtn.png";
-// import prevBtn from "../images/previousBtn.png";
-// import pauseBtn from "../images/playBtn.png";
+import {allSongs} from '../utils/Data.js';
+import { ShowPlaylistData } from "../utils/playlistDataSlice";
 
 function Home() {
   const dispatch = useDispatch();
   const playlistData = useSelector((store) => store?.PlaylistData?.Data);
-
+  
   // -----------------------------------------------------------------
   return (
     <div className="">
-      {/* tablet and laptop screen  */}
-      <div className="hidden md:text-white md:flex md:w-screen md:min-h-screen md:bg-red-950 ">
+      <div className="text-white md:flex md:w-screen md:min-h-screen bg-red-950 ">
         {/* left side navigation bar */}
-        <section className="md:flex-col md:flex md: md:items-center md:h-screen md:bg-black  md:w-2/12">
+        <section className=" hidden md:flex-col md:flex md: md:items-center md:h-screen md:bg-black  md:w-2/12">
           <section className="md:h-1/4 md:flex md:flex-col md:justify-between">
             <div className="md:mt-10 md:mb-16">
               <img
@@ -56,22 +54,26 @@ function Home() {
         <ContentPage />
 
         {/* right side of the screen media player */}
-        <section className="xl:flex-col xl:mr-10 xl:flex xl xl:items-center xl:h-screen xl:bg-red-950  xl:w-3/12">
+        <section className="hidden xl:flex-col xl:mr-10 xl:flex xl xl:items-center xl:h-screen xl:bg-red-950  xl:w-3/12">
           <AudioCard />
         </section>
       </div>
 
       {/* mobile screen */}
+      
     </div>
   );
 }
 
 export default Home;
 
+
+
+
 // <div className="md:hidden bg-red-800 flex flex-col pt-5 flex-wrap justify-start items-center gap-3 w-[100vw] min-h-[100vh]">
 //         {/* playlist name */}
 //         <article className="text-white mt-3 mb-2 font-bold text-2xl">
-//           <div> Playlist- {playlistName}</div>
+//           <div> Playlist</div>
 //         </article>
 
 //         {/* img */}
@@ -105,34 +107,34 @@ export default Home;
 
 //         {/* list of songs */}
 //         <article className="bg-red-950 p-3 flex flex-col h-auto rounded-xl text-white max-w-[90vw]">
-//           {songs.map((eachSong) => (
-//             // console.log(songs)
+//           {allSongs.map((eachSong) => (
+//             console.log(eachSong)
 
-//             <button
-//               onClick={() => handleSong(eachSong?.track)}
-//               key={eachSong?.track?.id}
-//               className="flex bottom-0 gap-3 mb-4   "
-//             >
-//               <img
-//                 src={eachSong?.track?.album?.images[0].url}
-//                 className="w-10 h-10x rounded-md mr-3"
-//               />
-//               <span className="flex justify-between w-full p-1 ">
-//                 <span className="flex flex-col text-start">
-//                   <span className=" line-clamp-1 font-semibold ">
-//                     {eachSong?.track?.name}
-//                   </span>
-//                   <span className=" line-clamp-1 text-sm ">
-//                     {eachSong?.track?.artists[0].name}
-//                   </span>
-//                 </span>
-//                 <span className="mr-2 flex items-end mb-1 min-w-16">
-//                   {(eachSong?.track?.duration_ms / 60000).toFixed(2) +
-//                     " " +
-//                     "min"}
-//                 </span>
-//               </span>
-//             </button>
+//             // <button
+//             //   onClick={() => handleSong(eachSong?.track)}
+//             //   key={eachSong?.id}
+//             //   className="flex bottom-0 gap-3 mb-4   "
+//             // >
+//             //   <img
+//             //     src={eachSong?.album?.images[0].url}
+//             //     className="w-10 h-10x rounded-md mr-3"
+//             //   />
+//             //   <span className="flex justify-between w-full p-1 ">
+//             //     <span className="flex flex-col text-start">
+//             //       <span className=" line-clamp-1 font-semibold ">
+//             //         {eachSong?.name}
+//             //       </span>
+//             //       <span className=" line-clamp-1 text-sm ">
+//             //         {eachSong?.artists[0].name}
+//             //       </span>
+//             //     </span>
+//             //     <span className="mr-2 flex items-end mb-1 min-w-16">
+//             //       {(eachSong?.duration_ms / 60000).toFixed(2) +
+//             //         " " +
+//             //         "min"}
+//             //     </span>
+//             //   </span>
+//             // </button>
 //           ))}
 //         </article>
 //       </div>
