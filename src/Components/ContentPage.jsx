@@ -75,7 +75,7 @@ function ContentPage() {
       {/* playlist photos */}
       <section className="md:flex flex mt-10 md:mt-10 justify-center xl:mt-4 md:justify-center">
         <img
-          className="relative bg-cover bg-center shadow-md shadow-current rounded-2xl mb-10  h-72 w-7/12 md:h-80 xl:h-52 md:w-10/12 xl:w-6/12 md:flex md:rounded-2xl md:items-center md:justify-center md:text-white"
+          className="relative bg-cover bg-center shadow-md shadow-current rounded-2xl mb-10  h-72 w-8/12 md:h-80 xl:h-64 md:w-10/12 xl:w-5/12 md:flex md:rounded-2xl md:items-center md:justify-center md:text-white"
           src={songPhoto || logo}
         >
         </img>
