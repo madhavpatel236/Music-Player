@@ -57,10 +57,7 @@ function Home() {
         <section className="hidden xl:flex-col xl:mr-10 xl:flex xl xl:items-center xl:h-screen xl:bg-red-950  xl:w-3/12">
           <AudioCard />
         </section>
-      </div>
-
-      {/* mobile screen */}
-      
+      </div>      
     </div>
   );
 }

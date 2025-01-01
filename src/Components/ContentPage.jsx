@@ -8,7 +8,6 @@ function ContentPage() {
   const dispatch = useDispatch();
   const playlist = useSelector((store) => store?.playlistData?.Data);
   const allSongs = playlist[0];
-
   const [selectedButton, setSelectedButton] = useState(null);
   const [songs, setSongs] = useState(allSongs);
 
@@ -74,7 +73,7 @@ function ContentPage() {
       {/* songs list */}
       <section className="md:mt-7 xl:mt-4 xl:mb-4 md:mb-6">
         <article className="md:bg-red-950 md:flex md:flex-col md:rounded-xl md:text-white">
-          <div className="font-bold ml-2 text-2xl">Playlist</div>
+          <div className="font-bold text-center ml-2 text-2xl">Playlist</div>
         </article>
       </section>
 
@@ -98,14 +97,14 @@ function ContentPage() {
                         className="w-full xl:hover:bg-red-900  text-md mt-3 p-2 flex justify-around border-b border-gray-500"
                       >
                         <span className="md:text-center  w-1/12">{index + 1}</span>
-                        <span className="hidden md:text-start md:flex md:w-5/12">
+                        <span className=" hidden xl:text-start xl:flex xl:w-5/12">
                           <img
-                            src={`${eachSong?.track?.album?.images[0]?.url}`}
-                            className="hidden xl:w-16 xl:h-16"
+                            src={`${eachSong?.album?.images[0]?.url}`}
+                            className=" xl:w-7 xl:mr-2 xl:h-7"
                           />
                           <span className="md:line-clamp-1">{eachSong?.name}</span>
                         </span>
-                        <span className="w-3/12 xl:text-start md:text-start md:line-clamp-1 pl-3">
+                        <span className="w-3/12 line-clamp-2 xl:text-start md:text-start md:line-clamp-1 pl-3">
                           {eachSong?.album?.name}
                         </span>
                         <span className="w-3/12 flex justify-center">
